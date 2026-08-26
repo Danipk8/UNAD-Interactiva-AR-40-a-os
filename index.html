@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>UNAD interactiva (AR) 40 años</title>
+
+</head>
+
+
+<body>
+```html
+<!-- =====================================================
+     INTRO
+====================================================== -->
+
+<div id="intro">
+
+  <!-- =================================================
+       ETAPA 1: VIDEO
+  ================================================== -->
+
+  <div id="intro-video">
+
+    <video
+      id="videoIntro"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    >
+      <source
+        src="./Videos/Video Intro.mp4"
+        type="video/mp4"
+      >
+
+      Tu navegador no soporta videos.
+
+    </video>
+
+  </div>
+
+
+    <!-- =================================================
+       Botón Omitir Intro
+  ================================================== -->
+  <button id="saltarIntro">
+  Omitir intro
+</button>
+
+
+  <!-- =================================================
+       ETAPA 2: PUERTAS + CONTENIDO
+  ================================================== -->
+
+  <div id="intro-puertas">
+
+    <!-- Puertas -->
+    <div class="puerta izquierda"></div>
+    <div class="puerta derecha"></div>
+
+
+    <!-- Contenido -->
+    <div class="intro-contenido">
+
+      <h1>UNAD INTERACTIVA</h1>
+
+      <p>
+        Explora la historia de la UNAD desde una experiencia
+        audiovisual e interactiva
+      </p>
+
+      <button id="entrar">
+        Entrar al recurso
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+  <!-- =====================================================
+       AR 8TH WALL
+  ====================================================== -->
+
+  <div class="ar-container">
+
+<iframe
+    id="arFrame"
+    src="https://danipk8.github.io/PruebaUnadAr-RepoGithub-/"
+    allow="camera; microphone; gyroscope; accelerometer; fullscreen"
+    allowfullscreen>
+    
+    Tu navegador no soporta marcos flotantes.
+
+  </iframe>
+
+
+  
+
+  <!-- =====================================================
+       BOTÓN REINICIAR AR
+  ====================================================== -->
+
+  <button id="reiniciarAR">
+    Reiniciar AR
+  </button>
+
+
+  <!-- BOTÓN VOLVER A COMENZAR -->
+
+  <button id="volverComenzar">
+     Volver al inicio
+  </button>
+
+
+  </div>
+
+
+
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script type="module" src="./main.js"></script>
+
+
+</body>
+
+</html>
+

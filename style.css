@@ -1,0 +1,793 @@
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    color: white;
+
+    background: #000;
+
+}
+
+
+/* =========================================================
+   AR EMBEBIDO - 8TH WALL
+========================================================= */
+
+.ar-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    overflow: hidden;
+
+    background: #000;
+
+}
+
+
+.ar-container iframe {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 100svh;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+
+}
+
+
+/* =========================================================
+   INTRO GENERAL
+========================================================= */
+
+#intro {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    background: #000;
+
+    z-index: 9999;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   ETAPA 1
+   VIDEO DE INTRODUCCIÓN
+========================================================= */
+
+#intro-video {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 10;
+
+    opacity: 1;
+
+    transition:
+        opacity 1.5s ease;
+
+}
+
+
+/*
+   Estado cuando el video termina
+   y comienza a desaparecer
+*/
+
+#intro-video.ocultar {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* Ocultar completamente el botón
+   cuando termina la etapa del video */
+
+#intro-video.ocultar #saltarIntro {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+#videoIntro {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    background: #000;
+
+    pointer-events: none;
+
+}
+
+/* =========================================================
+   BOTÓN OMITIR INTRO
+========================================================= */
+
+#saltarIntro {
+
+    position: absolute;
+
+    top: 25px;
+    right: 25px;
+
+    padding: 10px 16px;
+
+    font-size: 14px;
+
+    color: white;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.5);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        background 0.1s ease,
+        transform 0.1s ease,
+        opacity 0.1s ease;
+
+}
+
+
+#saltarIntro:hover {
+
+    background:
+        rgba(0, 225, 255, 0.2);
+
+    border-color:
+        #00e1ff;
+
+    transform:
+        scale(1.05);
+
+}
+
+
+/* =========================================================
+   ETAPA 2
+   PUERTAS + CONTENIDO
+========================================================= */
+
+#intro-puertas {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 5;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.1s ease;
+
+}
+
+
+/*
+   Aparece después de que
+   el video se desvanece
+*/
+
+#intro-puertas.mostrar {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+}
+
+
+/* =========================================================
+   PUERTAS
+========================================================= */
+
+.puerta {
+
+    position: absolute;
+
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #0a0a0a,
+            #111827
+        );
+
+    transition:
+        transform 1s ease;
+
+    z-index: 2;
+
+}
+
+
+/* PUERTA IZQUIERDA */
+
+.izquierda {
+
+    left: 0;
+
+    border-right:
+        1px solid
+        rgba(0, 225, 255, 0.2);
+
+}
+
+
+/* PUERTA DERECHA */
+
+.derecha {
+
+    right: 0;
+
+    border-left:
+        1px solid
+        rgba(0, 225, 255, 0.2);
+
+}
+
+
+/* =========================================================
+   CONTENIDO DE LA INTRO
+========================================================= */
+
+.intro-contenido {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 90%;
+    max-width: 700px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    /*
+       Importante:
+       el contenido está encima
+       de las puertas
+    */
+
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.intro-contenido h1 {
+
+    margin:
+        0 0 15px 0;
+
+    font-size:
+        clamp(
+            30px,
+            7vw,
+            50px
+        );
+
+    line-height: 1.1;
+
+    text-shadow:
+        0 0 1px #ffffff,
+        0 0 20px #00e1ff,
+        0 0 0px #00e1ff;
+
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+========================================================= */
+
+.intro-contenido p {
+
+    margin:
+        0 0 25px 0;
+
+    max-width: 600px;
+
+    font-size:
+        clamp(
+            15px,
+            3vw,
+            18px
+        );
+
+    line-height: 1.5;
+
+    color: #bdefff;
+
+}
+
+
+/* =========================================================
+   BOTÓN ENTRAR
+========================================================= */
+
+#entrar {
+
+    padding:
+        14px 28px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    border:
+        2px solid #00e1ff;
+
+    background:
+        rgba(0, 0, 0, 0.65);
+
+    color: white;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+/* PC / dispositivos con hover */
+
+#entrar:hover {
+
+    transform:
+        scale(1.05);
+
+    background:
+        rgba(0, 225, 255, 0.12);
+
+    box-shadow:
+        0 0 20px #00e1ff,
+        0 0 40px rgba(0, 225, 255, 0.3);
+
+}
+
+
+/* =========================================================
+   PUERTAS ABIERTAS
+========================================================= */
+
+/*
+   Al hacer clic en "Entrar",
+   la clase .abrir se agrega
+   al #intro.
+*/
+
+
+#intro.abrir .izquierda {
+
+    transform:
+        translateX(-100%);
+
+}
+
+
+#intro.abrir .derecha {
+
+    transform:
+        translateX(100%);
+
+}
+
+
+
+/* =========================================================
+   BOTÓN REINICIAR AR
+========================================================= */
+
+#reiniciarAR {
+
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    padding: 10px 15px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background:
+        rgba(0, 0, 0, 0.65);
+
+    border:
+        1px solid
+        #00e1ff;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    z-index: 100;
+
+    backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 0 12px
+        rgba(0, 225, 255, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+#reiniciarAR:hover {
+
+    transform:
+        scale(1.05);
+
+    background:
+        rgba(0, 225, 255, 0.15);
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 225, 255, 0.5);
+
+}
+
+/* =========================================================
+   BOTÓN VOLVER A COMENZAR
+========================================================= */
+
+#volverComenzar {
+
+    position: absolute;
+
+    top: 20px;
+    right: 150px;
+
+    padding: 10px 15px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background:
+        rgba(0, 0, 0, 0.65);
+
+    border:
+        1px solid
+        #ffc400;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    z-index: 100;
+
+    backdrop-filter:
+        blur(8px);
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 174, 0, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+#volverComenzar:hover {
+
+    transform:
+        scale(1.05);
+
+    background:
+        rgba(0, 225, 255, 0.15);
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 225, 255, 0.5);
+
+}
+
+
+
+/* =========================================================
+   CELULARES
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+    /* -----------------------------------------------------
+       VIDEO
+    ----------------------------------------------------- */
+
+    #videoIntro {
+
+        object-fit: cover;
+
+    }
+
+
+    /* -----------------------------------------------------
+       CONTENIDO
+    ----------------------------------------------------- */
+
+    .intro-contenido {
+
+        width: 90%;
+
+        padding:
+            20px;
+
+    }
+
+
+    /* -----------------------------------------------------
+       TÍTULO
+    ----------------------------------------------------- */
+
+    .intro-contenido h1 {
+
+        font-size:
+            clamp(
+                30px,
+                9vw,
+                45px
+            );
+
+        line-height: 1.1;
+
+    }
+
+
+    /* -----------------------------------------------------
+       TEXTO
+    ----------------------------------------------------- */
+
+    .intro-contenido p {
+
+        font-size: 16px;
+
+        line-height: 1.4;
+
+        max-width: 330px;
+
+    }
+
+
+    /* -----------------------------------------------------
+       BOTÓN
+    ----------------------------------------------------- */
+
+    #entrar {
+
+        padding:
+            13px 22px;
+
+        font-size: 16px;
+
+    }
+    
+
+
+/* -----------------------------------------------------
+       Omitir Intro para celulares
+    ----------------------------------------------------- */
+
+    #saltarIntro {
+
+    top: 15px;
+    right: 15px;
+
+    padding: 8px 12px;
+
+    font-size: 13px;
+
+}
+
+/* -----------------------------------------------------
+       Reiniciar AR para celulares
+    ----------------------------------------------------- */
+#reiniciarAR {
+
+    top: 15px;
+    right: 15px;
+
+    padding: 9px 12px;
+
+    font-size: 12px;
+
+}
+
+/* -----------------------------------------------------
+       Volver a Comenzar para celulares
+    ----------------------------------------------------- */
+#volverComenzar {
+
+    top: 15px;
+    right: 125px;
+
+    padding: 9px 11px;
+
+    font-size: 12px;
+
+}
+}
+
+
+
+/* =========================================================
+   OCULTAR BOTÓN OMITIR AL PASAR A LAS PUERTAS
+========================================================= */
+
+#saltarIntro.oculto {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+
+
+/* =========================================================
+   CELULARES PEQUEÑOS
+========================================================= */
+
+@media (max-width: 480px) {
+
+
+    .intro-contenido {
+
+        width: 95%;
+
+        padding:
+            15px;
+
+    }
+
+
+    .intro-contenido h1 {
+
+        font-size:
+            clamp(
+                28px,
+                9vw,
+                40px
+            );
+
+    }
+
+
+    .intro-contenido p {
+
+        font-size: 15px;
+
+        max-width: 300px;
+
+    }
+
+
+    #entrar {
+
+        padding:
+            12px 20px;
+
+        font-size: 15px;
+
+    }
+
+}
+
